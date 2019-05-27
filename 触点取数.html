@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>触点取数插件</title>
+	<style>
+		input{
+			width: 600px;
+			height: 20px;
+		}
+	</style>
+	<script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	输入1：<input type="text" id="shuru1"><br>
+	输入2：<input type="text" id="shuru2"><br>
+	输入3：<input type="text" id="shuru3"><br>
+	输入4：<input type="text" id="shuru4"><br>
+	输入5：<input type="text" id="shuru5"><br>
+	输入6：<input type="text" id="shuru6"><br>
+	<button id="btn">确定</button>
+	<div id="out"></div>
+</body>
+<script>
+	$(function(){
+		var str1 = $("#shuru1");
+		var str2 = $("#shuru2");
+		var str3 = $("#shuru3");
+		var str4 = $("#shuru4");
+		var str5 = $("#shuru5");
+		var str6 = $("#shuru6");
+ 		$("#btn").click(function(){
+ 			str1 = str1.val();
+ 			str2 = str2.val();
+ 			str3 = str3.val();
+ 			str4 = str4.val();
+ 			str5 = str5.val();
+ 			str6 = str6.val();
+ 			var strs = [];
+ 			strs.push(str1,str2,str3,str4,str5,str6);
+ 			strs = strs.join(',');
+ 			alert(strs);
+ 			item = strs.split("[");
+ 			item = item.join('')
+ 			item = item.split("]");
+ 			item = item.join('')
+ 			item = item.split('\"');
+ 			arr = item.join("");
+ 			arr = arr.split(",");
+ 			 for (var i = 0; i<arr.length; i++) {
+ 			 	$("#out").append(arr[i]+'<br>');
+ 			 };
+ 		});
+
+	});
+	
+
+	
+	
+</script>
+</html>
