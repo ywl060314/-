@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>触点取数插件</title>
+	<style>
+		#tip{
+			line-height: 10px;
+			margin-top: 20px; 
+			margin-left: 30px;
+		}
+		#shuru1{
+			width: 600px;
+			height: 50px;
+		}
+	</style>
+	<script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<form>
+		<div id="tip">找到数据银行后台对应文件，右键复制，粘贴到输入框中,点击确定，再将输出的内容复制到excel中进行操作。</div><br>
+		<span>输入：</span><textarea id="shuru1"></textarea>
+		<input type="reset" value="重置文本框"/>
+
+	</form>
+	<button id="btn">确定</button>
+	<div id="out">
+		<table id="tab">
+		</table>
+		<button id="cle">清空内容</button>
+	</div>
+</body>
+<script>
+	$(function(){		
+		$("#btn").click(function(){
+			//从输入框中取值
+			var jsonstr = $("#shuru1");
+			var jsonstr = jsonstr.val();
+			var obj = eval('('+jsonstr+')');
+			var strs = obj["body"]["axises"][0]["values"];
+			var nums = obj["body"]["datas"][0]["values"];
+			//遍历输出
+			for (var i in strs) {
+				//alert(strs[i].showName + nums[i]);
+				$("#tab").append("<tr>" +"<td>"+ strs[i].showName +"</td>" +"<td>" + nums[i] + "</td>"+ "</tr>");
+			};
+ 		});
+ 		//清空输出区
+		$("#cle").click(function(){
+			$("#tab").html("");
+		});
+	});
+</script>
+</html>
